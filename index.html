@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>उपनयन संस्कार निमंत्रण</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Tiro+Devanagari+Hindi&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --saffron: #FF9933; --maroon: #800000; --gold: #D4AF37; --cream: #FFFDD0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Tiro Devanagari Hindi', serif; background-color: var(--cream); color: var(--maroon); overflow-x: hidden; }
+
+        /* Flower Fall Animation */
+        .flower-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 99; }
+        .flower { position: absolute; font-size: 1.5rem; animation: fall linear infinite; opacity: 0.7; }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* UI Controls */
+        .controls { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+        .btn-action { background: var(--maroon); color: var(--gold); border: 2px solid var(--gold); padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle, rgba(255,153,51,0.2) 0%, rgba(255,253,208,1) 80%); padding: 20px; }
+        .ganesha-img { width: 180px; filter: drop-shadow(0 0 15px var(--gold)); margin-bottom: 20px; animation: soft-glow 3s infinite alternate; }
+        @keyframes soft-glow { from { filter: drop-shadow(0 0 5px var(--gold)); } to { filter: drop-shadow(0 0 25px var(--gold)); } }
+
+        /* Typography */
+        .shloka { font-style: italic; color: var(--maroon); margin: 20px 0; max-width: 800px; font-size: 1.2rem; }
+        h1 { font-family: 'Rozha One', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--maroon); margin-bottom: 10px; }
+
+        /* Content Sections */
+        section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .card { background: white; padding: 40px; border-radius: 20px; border: 3px double var(--gold); margin: 20px 0; box-shadow: 0 15px 35px rgba(128,0,0,0.1); position: relative; }
+        
+        .whatsapp-btn { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; font-family: 'Poppins', sans-serif; font-weight: 600; transition: 0.3s; }
+        .whatsapp-btn:hover { background: #128C7E; transform: scale(1.05); }
+        /* Timeline / Schedule */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .event-item {
+            background: var(--maroon);
+            color: var(--cream);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .event-item:hover {
+            transform: translateY(-5px);
+            background: var(--deep-red);
+        }
+
+        .date {
+            font-weight: bold;
+            display: block;
+            border-bottom: 1px solid var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .hidden { display: none; }
+        .english-font { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <div class="flower-container" id="flowerContainer"></div>
+
+    <div class="controls">
+        <button class="btn-action" onclick="toggleLanguage()" id="langBtn">English</button>
+        <button class="btn-action" onclick="toggleAudio()" id="audioBtn">🎵 Play Music</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="ganeshStutie.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="hero">
+        <div data-aos="zoom-in">
+            <img src="ganeshji.png" alt="Ganesha" class="ganesha-img">
+            
+            <p class="lang-hi">॥ श्री गणेशाय नमः ॥ </p>
+            <p class="lang-en hidden english-font">|| Shri Ganeshay Namah ||</p>
+            
+            <div class="shloka" data-aos="fade-up">
+                "यज्ञोपवीतं परमं पवित्रं प्रजापतेर्यत्सहजं पुरस्तात् ।<br>
+                आयुष्यमग्र्यं प्रतिमुञ्च शुभ्रं यज्ञोपवीतं बलमस्तु तेजः ॥"
+            </div>
+
+            <h1 class="lang-hi">उपनयन संस्कार </h1>
+            <h1 class="lang-en hidden english-font">Upanayan Ceremony</h1>
+            
+            <p class="lang-hi" style="font-size: 1.5rem;">॥ जय माँ जानकी ॥ </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="card" data-aos="fade-up">
+            <p class="lang-hi" style="font-size: 1.3rem; line-height: 1.8;">
+                परम पूज्यनीय जनक, माता तुल्य भगिनी, भ्राता एवं प्रिय मित्रगण, <br>
+                आप सभी से विनम्र एवं सस्नेह निवेदन है कि हमारे निवास स्थान पर हमारे प्रिय पुत्रों का पावन उपनयन संस्कार समारोह आयोजित किया गया है। इस मंगलमय एवं पवित्र अवसर पर आपकी उपस्थिति एवं शुभाशीर्वाद से हमारे परिवार को परम सौभाग्य की प्राप्ति होगी।
+            </p>
+            <p class="lang-en hidden english-font">
+                Respected elders and dear friends, we cordially invite you to the sacred thread ceremony of our beloved sons at our residence.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="lang-hi">उपनयन संस्कार </h2>
+        <h2 class="lang-en hidden english-font">The Ceremony Boys</h2>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <div class="card" style="flex: 1; min-width: 320px;" data-aos="flip-left">
+                <h3 class="lang-hi" style="color: var(--saffron); font-size: 1.8rem;">आकाश झा एवं सूरज झा</h3>
+                <h3 class="lang-en hidden english-font">Akash Jha & Suraj Jha</h3>
+                <p class="lang-hi">(पिताः श्री नागेन्द्र झा, माताः श्रीमती कविता झा) </p>
+                <p class="lang-en hidden english-font">(Father: Shri Nagendra Jha, Mother: Smt. Kavita Jha)</p>
+            </div>
+            <div class="card" style="flex: 1; min-width: 320px;" data-aos="flip-right">
+                <h3 class="lang-hi" style="color: var(--saffron); font-size: 1.8rem;">कुंदन झा एवं गुंजन झा </h3>
+                <h3 class="lang-en hidden english-font">Kundan Jha & Gunjan Jha</h3>
+                <p class="lang-hi">(पिताः श्री विजय कुमार झा, माताः श्रीमती बुच्ची दाई देवी) </p>
+                <p class="lang-en hidden english-font">(Father: Shri Vijay Kumar Jha, Mother: Smt. Bucchi Dai Devi)</p>
+            </div>
+        </div>
+    </section>
+    <section id="schedule">
+        <h2 data-aos="fade-up">कार्यक्रम सूची (फरवरी 2026)</h2>
+        <div class="schedule-grid">
+            <div class="event-item" data-aos="fade-up" data-aos-delay="100">
+                <span class="date">22 फरवरी (रविवार)</span>
+                प्रातः 10 बजे: बसकट्टी
+            </div>
+            <div class="event-item" data-aos="fade-up" data-aos-delay="200">
+                <span class="date">24 फरवरी (मंगलवार)</span>
+                मैट मंगल
+            </div>
+            <div class="event-item" data-aos="fade-up" data-aos-delay="300">
+                <span class="date">25 फरवरी (बुधवार)</span>
+                छेगरा, धुर
+            </div>
+            <div class="event-item" data-aos="fade-up" data-aos-delay="400">
+                <span class="date">26 फरवरी (गुरुवार)</span>
+                कुमरन
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 30px; background: var(--saffron); color: white;" data-aos="zoom-in">
+            <h3>मुख्य कार्यक्रम</h3>
+            <p style="font-size: 1.5rem; font-weight: bold;">27 फरवरी (शुक्रवार)</p>
+            <p>मुख्य उपनयन संस्कार एवं एकादशी उद्यापन</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="card" data-aos="zoom-in">
+            <h2 class="lang-hi">स्थान (Venue)</h2>
+            <p style="font-size: 1.2rem;">मोहिउद्दीनपुर पकरी, अलीनगर, दरभंगा 847103 </p>
+            <a href="https://maps.app.goo.gl/ApLqykvq9yKxeDEW7?g_st=aw" target="_blank" class="whatsapp-btn" style="background: var(--maroon);">📍 Open Live Location</a>
+			 <div class="card">
+		    <p>Mohiyuddinpur Pakri,<br>Alinagar, Darbhanga – 847103</p>
+            <iframe src="https://www.google.com/maps?q=Mohiyuddinpur+Pakri+Darbhanga+847103&output=embed" width="100%" height="250" style="border:0;border-radius:12px;margin-top:15px;"></iframe>
+            </div>
+		</div>
+	  
+    </section>
+
+    <footer style="background: var(--maroon); color: var(--gold); padding: 80px 20px; text-align: center;">
+        <div data-aos="fade-up">
+            <h3 class="lang-hi">पैतृक आशीर्वाद </h3>
+            <p style="font-size: 1.4rem;">स्वर्गीय श्री मधुकांत झा एवं श्रीमती रामदुलारी देवी </p>
+            <br>
+            <p class="lang-hi">निवेदक: झा परिवार, मोहिउद्दीनपुर पकरी </p>
+            <p class="lang-hi">(आगमन की हार्दिक प्रतीक्षा में...) </p>
+            
+            <a href="whatsapp://send?text=You are cordially invited to the Upanayan Ceremony of Jha Family. Click to view invitation: [Your-Link-Here]" class="whatsapp-btn">📲 Share via WhatsApp</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200 });
+
+        // Flower Falling Animation
+        const container = document.getElementById('flowerContainer');
+        const flowers = ['🌼', '🌸', '🌺', '🌻'];
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            container.appendChild(flower);
+            setTimeout(() => flower.remove(), 6000);
+        }
+        setInterval(createFlower, 400);
+
+        // Language Toggle
+        function toggleLanguage() {
+            const hi = document.querySelectorAll('.lang-hi');
+            const en = document.querySelectorAll('.lang-en');
+            const btn = document.getElementById('langBtn');
+            hi.forEach(el => el.classList.toggle('hidden'));
+            en.forEach(el => el.classList.toggle('hidden'));
+            btn.innerText = btn.innerText === 'English' ? 'हिन्दी' : 'English';
+        }
+
+        // Audio Control
+        function toggleAudio() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('audioBtn');
+            if (music.paused) { music.play(); btn.innerText = '⏸ Stop Music'; }
+            else { music.pause(); btn.innerText = '🎵 Play Music'; }
+        }
+    </script>
+</body>
+</html>
